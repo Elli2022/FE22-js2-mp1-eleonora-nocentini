@@ -1,7 +1,7 @@
 import type { PlayerRecord } from "./types";
 
 const BASE_URL =
-  "https://stensaxpase-d3b57-default-rtdb.europe-west1.firebasedatabase.app/scores";
+  "https://rock-paper-scissors-d5111-default-rtdb.europe-west1.firebasedatabase.app/scores";
 
 export async function fetchHighScores(): Promise<PlayerRecord[]> {
   const response = await fetch(`${BASE_URL}/.json`);
@@ -13,11 +13,15 @@ export async function fetchHighScores(): Promise<PlayerRecord[]> {
       ? String((data as { error: string }).error)
       : null;
 
+  if (response.status === 404) {
+    return [];
+  }
+
   if (!response.ok || firebaseError) {
     throw new Error(firebaseError ?? `Firebase responded with ${response.status}`);
   }
 
-  if (!data) {
+  if (!data || data === null) {
     return [];
   }
 
