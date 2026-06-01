@@ -1,5 +1,5 @@
 import "./styles/main.css";
-import { fetchHighScores, savePlayerScore } from "./firebase";
+import { fetchHighScores, getScoreSource, savePlayerScore } from "./scores";
 import {
   MOVE_EMOJI,
   MOVE_LABEL,
@@ -66,6 +66,7 @@ app.innerHTML = `
     </section>
     <aside class="card highscores">
       <h2>High scores</h2>
+      <p class="highscores-note" id="highscores-note" hidden></p>
       <ol id="highscore-list"></ol>
     </aside>
   </div>
@@ -79,6 +80,7 @@ const computerScoreEl = document.querySelector<HTMLParagraphElement>("#computer-
 const lastRoundEl = document.querySelector<HTMLParagraphElement>("#last-round")!;
 const statusBanner = document.querySelector<HTMLParagraphElement>("#status-banner")!;
 const highscoreList = document.querySelector<HTMLOListElement>("#highscore-list")!;
+const highscoresNote = document.querySelector<HTMLParagraphElement>("#highscores-note")!;
 const moveButtons = document.querySelectorAll<HTMLButtonElement>(".move-btn");
 
 function showError(message: string) {
@@ -120,12 +122,28 @@ function escapeHtml(text: string): string {
   return div.innerHTML;
 }
 
+function updateHighscoresNote() {
+  const source = getScoreSource();
+  if (source === "local") {
+    highscoresNote.hidden = false;
+    highscoresNote.textContent =
+      "Firebase database is offline — showing scores saved in this browser.";
+  } else {
+    highscoresNote.hidden = true;
+    highscoresNote.textContent = "";
+  }
+}
+
 async function refreshHighScores() {
   try {
     const scores = await fetchHighScores();
+    updateHighscoresNote();
     renderHighScores(scores);
   } catch {
     highscoreList.innerHTML = `<li class="empty">Could not load scores.</li>`;
+    highscoresNote.hidden = false;
+    highscoresNote.textContent =
+      "Firebase database is unavailable. Scores will be saved locally after you win.";
   }
 }
 

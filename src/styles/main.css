@@ -264,6 +264,13 @@ body {
   color: var(--tie);
 }
 
+.highscores-note {
+  font-size: 0.8rem;
+  color: var(--tie);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
 .highscores h2 {
   font-size: 1rem;
   margin-bottom: 1rem;

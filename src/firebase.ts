@@ -5,14 +5,24 @@ const BASE_URL =
 
 export async function fetchHighScores(): Promise<PlayerRecord[]> {
   const response = await fetch(`${BASE_URL}/.json`);
-  if (!response.ok) {
-    throw new Error("Could not load high scores");
+  const data: Record<string, PlayerRecord> | { error?: string } | null =
+    await response.json();
+
+  const firebaseError =
+    data && typeof data === "object" && "error" in data
+      ? String((data as { error: string }).error)
+      : null;
+
+  if (!response.ok || firebaseError) {
+    throw new Error(firebaseError ?? `Firebase responded with ${response.status}`);
   }
 
-  const data: Record<string, PlayerRecord> | null = await response.json();
-  if (!data) return [];
+  if (!data) {
+    return [];
+  }
 
-  return Object.values(data)
+  const scores = data as Record<string, PlayerRecord>;
+  return Object.values(scores)
     .filter((entry) => entry?.name)
     .sort((a, b) => b.score - a.score)
     .slice(0, 5);
