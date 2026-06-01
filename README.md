@@ -8,12 +8,13 @@ Rock Paper Scissors with Firebase Realtime Database high scores. The **2022 vani
 
 | Version | URL |
 |--------|-----|
-| **Modern** (Vite + TypeScript) | `/` on the Netlify site |
-| **Original** (2022 HTML/CSS/JS) | `/legacy/index.html` |
+| **Modern** (Vite + TypeScript) | https://celadon-jelly-374a01.netlify.app/ |
+| **Original** on same site | https://celadon-jelly-374a01.netlify.app/legacy/index.html |
+| **Original** (standalone deploy) | https://gleaming-churros-1af9d1.netlify.app/ |
 
-> After deploy, replace the base URL below with your Netlify domain from the dashboard.
+GitHub Pages has been removed; hosting is on Netlify only.
 
-**Site:** configure continuous deployment from this repository on Netlify (`main` branch, build command `npm run build`, publish directory `dist`).
+**Continuous deploy:** connect repo `Elli2022/FE22-js2-mp1-eleonora-nocentini` in the [Netlify dashboard](https://app.netlify.com/projects/celadon-jelly-374a01) (`main`, build `npm run build`, publish `dist`) for automatic builds on push.
 
 ## What is included
 
