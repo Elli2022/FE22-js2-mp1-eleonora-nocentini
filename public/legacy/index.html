@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Firebase Sten Sax Påse</title>
+</head>
+<body>
+    <div class="title">ROCK PAPER SCISSOR</div>
+        <div>
+            <p class="name">Write your name</p>
+        </div>
+    <form action="">
+        <label for="name">Name:</label>
+        <input type="text" id="name">
+        <!-- <label for="score">Score:</label>
+        <input type="number" id="score"> -->
+        <button id="play">Play</button>
+    </form>
+
+    <div id="highscoresList">
+        <ol type="1">
+          <li id="highscoreOne"></li>
+          <li id="highscoreTwo"></li>
+          <li id="highscoreThree"></li>
+          <li id="highscoreFour"></li>
+          <li id="highscoreFive"></li>
+        </ol>
+      </div>
+    <!--  -->
+    <section class="game">
+        
+        <form action="">
+            <!-- <label for="name">Name:</label>
+            <input type="text" name="" id="nameInput"> -->
+            <!-- <button id="play">Play</button> -->
+        </form>
+        <!-- <h1 id="name"></h1> -->
+        <div class="score">
+            <div class="playerScore">
+                <h2 id="player">Player</h2>
+                <h2 id="userChoice"></h2>
+                <h2 id="userScore"></h2>
+            </div>
+            <span></span>
+            <div class="computerScore">
+                <h2 id="computerPlayer">Computer</h2>
+                <h2 id="computerChoice"></h2>
+                <h2 id="computerScore"></h2>
+            </div>
+        </div>
+        
+        <p></p>
+        <div>Choose your move</div>
+        <div class="options">
+            <button class="rock"><img id="sten-user" src="images/rock.jpg" alt=""></button>
+            <button class="paper"><img id="pase-user" src="images/paper.jpg" alt=""></button>
+            <button class="scissor"><img id="sax-user"src="images/scissor.jpg" alt=""></button>
+        </div>
+
+        <!-- <button id="re-start">Restart Game</button> -->
+    </section>
+    
+</body>
+</html>
