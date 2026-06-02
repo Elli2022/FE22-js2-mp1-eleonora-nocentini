@@ -1,7 +1,7 @@
 import type { PlayerRecord } from "./types";
 
 const BASE_URL =
-  "https://rock-paper-scissors-d5111-default-rtdb.europe-west1.firebasedatabase.app/scores";
+  "https://rock-paper-scissors-d5171-default-rtdb.firebaseio.com/scores";
 
 export async function fetchHighScores(): Promise<PlayerRecord[]> {
   const response = await fetch(`${BASE_URL}/.json`);
