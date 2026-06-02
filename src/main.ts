@@ -1,5 +1,5 @@
 import "./styles/main.css";
-import { fetchHighScores, getScoreSource, savePlayerScore } from "./scores";
+import { fetchHighScores, getScoreSource, recordMatchResult } from "./scores";
 import {
   MOVE_EMOJI,
   MOVE_LABEL,
@@ -7,7 +7,7 @@ import {
   randomMove,
   resolveRound,
 } from "./game";
-import type { Move, PlayerRecord } from "./types";
+import type { LeaderboardEntry, Move } from "./types";
 
 interface GameState {
   playerName: string;
@@ -65,7 +65,7 @@ app.innerHTML = `
       <p class="status-banner" id="status-banner" role="status"></p>
     </section>
     <aside class="card highscores">
-      <h2>High scores</h2>
+      <h2>Top 10 leaderboard</h2>
       <p class="highscores-note" id="highscores-note" hidden></p>
       <ol id="highscore-list"></ol>
     </aside>
@@ -103,15 +103,21 @@ function setMoveButtonsEnabled(enabled: boolean) {
   });
 }
 
-function renderHighScores(scores: PlayerRecord[]) {
+function renderHighScores(scores: LeaderboardEntry[]) {
   if (scores.length === 0) {
-    highscoreList.innerHTML = `<li class="empty">No scores yet — win a match!</li>`;
+    highscoreList.innerHTML = `<li class="empty">No matches played yet — finish a game!</li>`;
     return;
   }
   highscoreList.innerHTML = scores
     .map(
-      (entry) =>
-        `<li><span>${escapeHtml(entry.name)}</span><span class="points">${entry.score} pts</span></li>`
+      (entry) => `
+        <li>
+          <span class="leader-name">${escapeHtml(entry.name)}</span>
+          <span class="leader-stats">
+            <span class="stat">${entry.wins} ${entry.wins === 1 ? "win" : "wins"}</span>
+            <span class="stat">${entry.points} pts</span>
+          </span>
+        </li>`
     )
     .join("");
 }
@@ -168,23 +174,21 @@ async function endMatch(winner: "user" | "computer") {
   setMoveButtonsEnabled(false);
 
   if (winner === "user") {
-    const record: PlayerRecord = {
-      name: state.playerName,
-      score: state.userScore,
-    };
     showStatus(`${state.playerName} wins the match!`, "win");
-    try {
-      const existing = await fetchHighScores();
-      const previous = existing.find((e) => e.name === state.playerName);
-      if (!previous || state.userScore > previous.score) {
-        await savePlayerScore(record);
-      }
-      await refreshHighScores();
-    } catch {
-      showError("Match won, but saving the high score failed.");
-    }
   } else {
     showStatus("Computer wins the match.", "lose");
+  }
+
+  try {
+    await recordMatchResult(
+      winner,
+      state.playerName,
+      state.userScore,
+      state.computerScore
+    );
+    await refreshHighScores();
+  } catch {
+    showError("Match finished, but saving stats failed.");
   }
 
   setTimeout(() => {

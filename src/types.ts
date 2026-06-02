@@ -1,8 +1,9 @@
 export type Move = "rock" | "paper" | "scissors";
 
-export interface PlayerRecord {
+export interface LeaderboardEntry {
   name: string;
-  score: number;
+  wins: number;
+  points: number;
 }
 
 export interface RoundResult {
@@ -10,3 +11,5 @@ export interface RoundResult {
   computerMove: Move;
   winner: "user" | "computer" | "tie";
 }
+
+export const COMPUTER_NAME = "Computer";
