@@ -19,6 +19,16 @@ GitHub Pages has been removed; hosting is on Netlify only.
 
 **Continuous deploy:** the site is linked to `Elli2022/rock-paper-scissors` on branch `main` (`npm run build` → `dist`, see `netlify.toml`). Every push to `main` triggers a production build on [Netlify](https://app.netlify.com/projects/rock-paper-scissors-elli2022).
 
+## Screenshots
+Professional UI snapshots from the modern build:
+
+### Modern build
+![Modern UI — Start screen & top 10](docs/screenshots/Ska_rmavbild_2026-06-02_kl._07.52.24-b068006e-5ce7-48e8-a353-d6fc6f45ce76.png)
+
+![Modern UI — Leaderboard state](docs/screenshots/Ska_rmavbild_2026-06-02_kl._07.43.04-63cef5fd-7d83-4088-9e19-95ce33674b1b.png)
+
+![Modern UI — Round gameplay](docs/screenshots/Ska_rmavbild_2026-06-01_kl._18.36.52-722d36ef-4559-42a6-abba-1a55109ea57b.png)
+
 ## What is included
 
 - **`src/`** — Modern game UI, typed round logic, Firebase high-score sync.
