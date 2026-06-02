@@ -1,25 +1,28 @@
-# JavaScript Course 2 — Miniproject 1
+# Rock Paper Scissors
 
 Rock Paper Scissors with Firebase Realtime Database high scores. The **2022 vanilla JS delivery** is preserved under `/legacy/`; the **modern rebuild** uses Vite and TypeScript at the site root.
 
-[![GitHub](https://img.shields.io/github/stars/Elli2022/FE22-js2-mp1-eleonora-nocentini?style=social)](https://github.com/Elli2022/FE22-js2-mp1-eleonora-nocentini)
+
+Rock Paper Scissors with Firebase Realtime Database high scores. The **2022 vanilla JS delivery** is preserved under `/legacy/`; the **modern rebuild** uses Vite and TypeScript at the site root.
+
+[![GitHub](https://img.shields.io/github/stars/Elli2022/rock-paper-scissors?style=social)](https://github.com/Elli2022/rock-paper-scissors)
 
 ## Live (Netlify)
 
 | Version | URL |
 |--------|-----|
-| **Modern** (Vite + TypeScript) | https://celadon-jelly-374a01.netlify.app/ |
-| **Original** on same site | https://celadon-jelly-374a01.netlify.app/legacy/index.html |
+| **Modern** (Vite + TypeScript) | https://rock-paper-scissors-elli2022.netlify.app/ |
+| **Original** on same site | https://rock-paper-scissors-elli2022.netlify.app/legacy/index.html |
 | **Original** (standalone deploy) | https://gleaming-churros-1af9d1.netlify.app/ |
 
 GitHub Pages has been removed; hosting is on Netlify only.
 
-**Continuous deploy:** the site is linked to `Elli2022/FE22-js2-mp1-eleonora-nocentini` on branch `main` (`npm run build` → `dist`, see `netlify.toml`). Every push to `main` triggers a production build on [Netlify](https://app.netlify.com/projects/celadon-jelly-374a01).
+**Continuous deploy:** the site is linked to `Elli2022/rock-paper-scissors` on branch `main` (`npm run build` → `dist`, see `netlify.toml`). Every push to `main` triggers a production build on [Netlify](https://app.netlify.com/projects/rock-paper-scissors-elli2022).
 
 ## What is included
 
 - **`src/`** — Modern game UI, typed round logic, Firebase high-score sync.
-- **`public/legacy/`** — Unmodified school delivery (`index.html`, `script.js`, `style.css`, `images/`) so you can compare behavior and styling.
+- **`public/legacy/`** — Original 2022 delivery (`index.html`, `script.js`, `style.css`, `images/`) so you can compare behavior and styling.
 - **Firebase** — Same Realtime Database endpoint as the original project (`stensaxpase-d3b57`).
 
 ## Stack (modern)
@@ -68,7 +71,7 @@ Or connect the GitHub repo in the Netlify UI with:
 
 ## Repository
 
-https://github.com/Elli2022/FE22-js2-mp1-eleonora-nocentini
+https://github.com/Elli2022/rock-paper-scissors
 
 ## Course context
 
