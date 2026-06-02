@@ -15,7 +15,7 @@ let playerObj = {
 
 console.log(playerObj);
 const baseUrl =
-  "https://stensaxpase-d3b57-default-rtdb.europe-west1.firebasedatabase.app/";
+  "https://rock-paper-scissors-d5171-default-rtdb.firebaseio.com/";
 
 async function getHighScores() {
 try {
